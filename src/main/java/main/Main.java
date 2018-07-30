@@ -16,8 +16,7 @@ public class Main {
         properties.setProperty("password", "123");
         properties.setProperty("useUnicode", "true");
         properties.setProperty("characterEncoding", "utf8");
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mainAcad", properties);
+        try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mainAcad", properties);) {
 
             deleteStudent(connection);
 
@@ -28,7 +27,7 @@ public class Main {
 
 //            List<Student> students = getStudents(connection);
 //            students.forEach(System.out::println);
-            connection.close();
+//            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
